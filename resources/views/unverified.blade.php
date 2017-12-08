@@ -1,1 +1,3 @@
-<h1>Unverified</h1>
+@if (Session::has('error'))
+  {{ Session::get('error') }}
+@endif

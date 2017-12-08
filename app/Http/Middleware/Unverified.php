@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
+use Session;
 
 class Unverified
 {
@@ -19,6 +20,7 @@ class Unverified
         if (Auth::user()->status) {
           return $next($request);
         }
+        Session::flash('error', 'Anda tidak berhak mengakses halaman ini');
         return redirect()->route('unverified');
     }
 }
